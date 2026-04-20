@@ -12,3 +12,10 @@ jobs:
 
       - name: Print second message
         run: echo "Hello there!"
+
+  say-bye:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print bye message
+        run: echo "Say bye"
