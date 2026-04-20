@@ -1,4 +1,4 @@
-name: My First Workflow
+name: My First Workflow 
 
 on: push
 
@@ -9,3 +9,6 @@ jobs:
     steps:
       - name: Print message
         run: echo "Hello, GitHub Actions!"
+
+      - name: Print second message
+        run: echo "Hello there!"
