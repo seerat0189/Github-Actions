@@ -24,26 +24,44 @@
 #         run: echo "Say bye"
 
 
+# name: My First Workflow 
+
+# on: pull_request
+
+# jobs: 
+#   say-hello:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Print message
+#         run: echo "Hello, GitHub Actions!"
+
+#       - name: Print second message
+#         run: echo "Hello there!"
+
+#   say-bye:
+#     runs-on: ubuntu-latest
+#     needs: say-hello
+
+#     steps:
+#       - name: Print bye message
+#         run: echo "Say bye"
+
+
+
 name: My First Workflow 
 
 on: pull_request
 
 jobs: 
-  say-hello:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print message
-        run: echo "Hello, GitHub Actions!"
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Print second message
-        run: echo "Hello there!"
+      - name: List file
+        run: ls
 
-  say-bye:
-    runs-on: ubuntu-latest
-    needs: say-hello
-
-    steps:
-      - name: Print bye message
-        run: echo "Say bye"
 
