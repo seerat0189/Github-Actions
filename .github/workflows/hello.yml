@@ -84,4 +84,4 @@ jobs:
     
     steps:
       - name: deploy
-        run: echo "deployed"
+        run: echo "deploying"
