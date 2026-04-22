@@ -1,21 +1,21 @@
-var express = require('express')
+import express from 'express';
 
-const app = express()
-const PORT = 3000
+const app = express();
+const PORT = 3000;
 
-app.use(express.json())
+app.use(express.json());
 
 app.get('/', (req, res) => {
-    message = "Server running"
-    res.send(message)
-})
+  const message = 'Server running';
+  res.send(message);
+});
 
 app.get('/test', (req, res) => {
-    let data = "test route"
-    console.log(data)
-    return res.send("OK")
-})
+  const data = 'test route';
+  console.log(data);
+  return res.send('OK');
+});
 
 app.listen(PORT, () => {
-    console.log("Server started")   
-})
+  console.log('Server started');
+});
