@@ -49,9 +49,47 @@
 
 
 
-name: My First Workflow 
+# name: My First Workflow
 
-on: pull_request
+# on: pull_request
+
+# jobs: 
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: List file
+#         run: ls
+
+#       - name: Setup node
+#         uses: actions/setup-node@v4
+#         with: 
+#           node-version: 24
+#           cache: "npm"
+
+#       - name: Check node version
+#         run: node -v
+
+#       - name: Download dependencies
+#         run: npm i
+
+#       - name: Run test
+#         run: npm run test
+
+#   deploy-app:
+#     runs-on: ubuntu-latest
+#     needs: test
+    
+#     steps:
+#       - name: deploy
+#         run: echo "deploying"
+
+name: My First Workflow
+
+on: push
 
 jobs: 
   test:
@@ -61,22 +99,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: List file
-        run: ls
-
       - name: Setup node
         uses: actions/setup-node@v4
         with: 
           node-version: 24
+          cache: "npm"
 
-      - name: Check node version
-        run: node -v
+      - name: Install dependencies
+        run: npm install
 
-      - name: Download dependencies
-        run: npm i
+      - name: Run ESLint
+        run: npm run lint
 
-      - name: Run test
+      - name: Run tests
         run: npm run test
+
+      - name: Build project
+        run: npm run build
 
   deploy-app:
     runs-on: ubuntu-latest
@@ -85,6 +124,3 @@ jobs:
     steps:
       - name: deploy
         run: echo "deploying"
-        with: 
-          node-version: 24
-        cache: "npm" 

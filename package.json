@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Running test\" ",
+    "lint": "eslint .",
+    "test": "echo \"Test successful\" ",
+    "build": "echo \"Build successful\" ",
     "start": "node server.js"
   },
   "repository": {
@@ -14,7 +16,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/seerat0189/Github-Actions/issues"
   },
