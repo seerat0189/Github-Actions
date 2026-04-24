@@ -19,3 +19,6 @@ app.get('/test', (req, res) => {
 app.listen(PORT, () => {
   console.log('Server started');
 });
+
+// this is in module type, but it can be done via commonjs type also
+// for commonjs, we need to make .eslintrc.json file instead of eslint.config.js

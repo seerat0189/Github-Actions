@@ -87,40 +87,72 @@
 #       - name: deploy
 #         run: echo "deploying"
 
+
+# name: My First Workflow
+
+# on: push
+
+# jobs: 
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Setup node
+#         uses: actions/setup-node@v4
+#         with: 
+#           node-version: 24
+#           cache: "npm"
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Run ESLint
+#         run: npm run lint
+
+#       - name: Run tests
+#         run: npm run test
+
+#       - name: Build project
+#         run: npm run build
+
+#   deploy-app:
+#     runs-on: ubuntu-latest
+#     needs: test
+    
+#     steps:
+#       - name: deploy
+#         run: echo "deploying"
+
 name: My First Workflow
 
 on: push
 
 jobs: 
-  test:
+  upload-file:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Create file
+        run: touch file1.txt
 
-      - name: Setup node
-        uses: actions/setup-node@v4
+      - name: Upload file
+        uses: actions/upload-artifact@v4
         with: 
-          node-version: 24
-          cache: "npm"
+          name: my-file
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run ESLint
-        run: npm run lint
-
-      - name: Run tests
-        run: npm run test
-
-      - name: Build project
-        run: npm run build
-
-  deploy-app:
+  download-file:
     runs-on: ubuntu-latest
-    needs: test
+    needs: upload-file
     
     steps:
-      - name: deploy
-        run: echo "deploying"
+      - name: Download file
+        uses: actions/download-artifact@v4
+        with: 
+          name: my-file
+          path: file1.txt
+
+      - name: Read file
+        run: cat file1.txt
